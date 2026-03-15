@@ -1,0 +1,577 @@
+<mujoco model="dual_kuka_model">
+  <compiler autolimits="true" angle="radian"/>
+  <option impratio="10" integrator="implicitfast" cone="elliptic"/>
+  <default>
+    <default class="/"/>
+    <default class="iiwa14/">
+      <default class="iiwa14/iiwa">
+        <material specular="0.5" shininess="0.25"/>
+        <joint axis="0 0 1"/>
+        <site group="4" rgba="1 0 0 1" size="0.001"/>
+        <general gaintype="fixed" biastype="affine" gainprm="2000" biasprm="0 -2000 -200"/>
+        <default class="iiwa14/joint1">
+          <joint range="-2.96706 2.96706"/>
+          <general ctrlrange="-2.96706 2.96706"/>
+          <default class="iiwa14/joint2">
+            <joint range="-2.0943999999999998 2.0943999999999998"/>
+            <general ctrlrange="-2.0943999999999998 2.0943999999999998"/>
+          </default>
+        </default>
+        <default class="iiwa14/joint3">
+          <joint range="-3.0543300000000002 3.0543300000000002"/>
+          <general ctrlrange="-3.0543300000000002 3.0543300000000002"/>
+        </default>
+        <default class="iiwa14/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2" material="iiwa14/gray"/>
+        </default>
+        <default class="iiwa14/collision">
+          <geom group="3"/>
+        </default>
+      </default>
+    </default>
+    <default class="iiwa14/Dual_wrist_camera/">
+      <default class="iiwa14/Dual_wrist_camera/2f85">
+        <mesh scale="0.001 0.001 0.001"/>
+        <joint axis="0 0 1"/>
+        <general biastype="affine"/>
+        <default class="iiwa14/Dual_wrist_camera/driver">
+          <joint solreflimit="0.0050000000000000001 1" solimplimit="0.94999999999999996 0.98999999999999999 0.001" range="0 0.90000000000000002" armature="0.0050000000000000001" damping="0.10000000000000001"/>
+        </default>
+        <default class="iiwa14/Dual_wrist_camera/follower">
+          <joint solreflimit="0.0050000000000000001 1" solimplimit="0.94999999999999996 0.98999999999999999 0.001" range="-0.872664 0.90000000000000002" armature="0.001"/>
+        </default>
+        <default class="iiwa14/Dual_wrist_camera/spring_link">
+          <joint stiffness="0.050000000000000003" range="-0.29670597283 0.90000000000000002" springref="2.6200000000000001" armature="0.001" damping="0.00125"/>
+        </default>
+        <default class="iiwa14/Dual_wrist_camera/coupler">
+          <joint solreflimit="0.0050000000000000001 1" solimplimit="0.94999999999999996 0.98999999999999999 0.001" range="-1.5700000000000001 0" armature="0.001"/>
+        </default>
+        <default class="iiwa14/Dual_wrist_camera/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2" material="iiwa14/Dual_wrist_camera/black"/>
+        </default>
+        <default class="iiwa14/Dual_wrist_camera/collision">
+          <geom type="mesh" group="3"/>
+          <default class="iiwa14/Dual_wrist_camera/pad_box1">
+            <geom type="box" priority="1" size="0.002 0.010999999999999999 0.0093749999999999997" rgba="0.55000000000000004 0.55000000000000004 0.55000000000000004 1" friction="0.69999999999999996" mass="9.9999999999999995e-07" solref="0.0040000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" pos="0.043257999999999998 0 0.12"/>
+          </default>
+          <default class="iiwa14/Dual_wrist_camera/pad_box2">
+            <geom type="box" priority="1" size="0.002 0.010999999999999999 0.0093749999999999997" rgba="0.45000000000000001 0.45000000000000001 0.45000000000000001 1" friction="0.59999999999999998" mass="9.9999999999999995e-07" solref="0.0040000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" pos="0.043257999999999998 0 0.13875000000000001"/>
+          </default>
+        </default>
+      </default>
+    </default>
+    <default class="iiwa14_1/">
+      <default class="iiwa14_1/iiwa">
+        <material specular="0.5" shininess="0.25"/>
+        <joint axis="0 0 1"/>
+        <site group="4" rgba="1 0 0 1" size="0.001"/>
+        <general gaintype="fixed" biastype="affine" gainprm="2000" biasprm="0 -2000 -200"/>
+        <default class="iiwa14_1/joint1">
+          <joint range="-2.96706 2.96706"/>
+          <general ctrlrange="-2.96706 2.96706"/>
+          <default class="iiwa14_1/joint2">
+            <joint range="-2.0943999999999998 2.0943999999999998"/>
+            <general ctrlrange="-2.0943999999999998 2.0943999999999998"/>
+          </default>
+        </default>
+        <default class="iiwa14_1/joint3">
+          <joint range="-3.0543300000000002 3.0543300000000002"/>
+          <general ctrlrange="-3.0543300000000002 3.0543300000000002"/>
+        </default>
+        <default class="iiwa14_1/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2" material="iiwa14_1/gray"/>
+        </default>
+        <default class="iiwa14_1/collision">
+          <geom group="3"/>
+        </default>
+      </default>
+    </default>
+    <default class="iiwa14_1/Dual_wrist_camera/">
+      <default class="iiwa14_1/Dual_wrist_camera/2f85">
+        <mesh scale="0.001 0.001 0.001"/>
+        <joint axis="0 0 1"/>
+        <general biastype="affine"/>
+        <default class="iiwa14_1/Dual_wrist_camera/driver">
+          <joint solreflimit="0.0050000000000000001 1" solimplimit="0.94999999999999996 0.98999999999999999 0.001" range="0 0.90000000000000002" armature="0.0050000000000000001" damping="0.10000000000000001"/>
+        </default>
+        <default class="iiwa14_1/Dual_wrist_camera/follower">
+          <joint solreflimit="0.0050000000000000001 1" solimplimit="0.94999999999999996 0.98999999999999999 0.001" range="-0.872664 0.90000000000000002" armature="0.001"/>
+        </default>
+        <default class="iiwa14_1/Dual_wrist_camera/spring_link">
+          <joint stiffness="0.050000000000000003" range="-0.29670597283 0.90000000000000002" springref="2.6200000000000001" armature="0.001" damping="0.00125"/>
+        </default>
+        <default class="iiwa14_1/Dual_wrist_camera/coupler">
+          <joint solreflimit="0.0050000000000000001 1" solimplimit="0.94999999999999996 0.98999999999999999 0.001" range="-1.5700000000000001 0" armature="0.001"/>
+        </default>
+        <default class="iiwa14_1/Dual_wrist_camera/visual">
+          <geom type="mesh" contype="0" conaffinity="0" group="2" material="iiwa14_1/Dual_wrist_camera/black"/>
+        </default>
+        <default class="iiwa14_1/Dual_wrist_camera/collision">
+          <geom type="mesh" group="3"/>
+          <default class="iiwa14_1/Dual_wrist_camera/pad_box1">
+            <geom type="box" priority="1" size="0.002 0.010999999999999999 0.0093749999999999997" rgba="0.55000000000000004 0.55000000000000004 0.55000000000000004 1" friction="0.69999999999999996" mass="9.9999999999999995e-07" solref="0.0040000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" pos="0.043257999999999998 0 0.12"/>
+          </default>
+          <default class="iiwa14_1/Dual_wrist_camera/pad_box2">
+            <geom type="box" priority="1" size="0.002 0.010999999999999999 0.0093749999999999997" rgba="0.45000000000000001 0.45000000000000001 0.45000000000000001 1" friction="0.59999999999999998" mass="9.9999999999999995e-07" solref="0.0040000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" pos="0.043257999999999998 0 0.13875000000000001"/>
+          </default>
+        </default>
+      </default>
+    </default>
+  </default>
+  <asset>
+    <material name="iiwa14/gray" class="iiwa14/iiwa" rgba="0.40000000000000002 0.40000000000000002 0.40000000000000002 1"/>
+    <material name="iiwa14/light_gray" class="iiwa14/iiwa" rgba="0.59999999999999998 0.59999999999999998 0.59999999999999998 1"/>
+    <material name="iiwa14/black" class="iiwa14/iiwa" rgba="0 0 0 1"/>
+    <material name="iiwa14/orange" class="iiwa14/iiwa" rgba="1 0.42352899999999999 0.039215699999999999 1"/>
+    <mesh name="iiwa14/link_0" class="iiwa14/" file="link_0-baabeeb7011606590600793859d7403e5a285b9a.obj"/>
+    <mesh name="iiwa14/link_1" class="iiwa14/" file="link_1-c60fc4e4431959600915e42c8df1ef280600cdcc.obj"/>
+    <mesh name="iiwa14/link_2_orange" class="iiwa14/" file="link_2_orange-d3260b57d9e6164a7c0622295ce4723efad5a2c2.obj"/>
+    <mesh name="iiwa14/link_2_grey" class="iiwa14/" file="link_2_grey-04d5bb08f35433038e492c56f5b16cabaad145f4.obj"/>
+    <mesh name="iiwa14/link_3" class="iiwa14/" file="link_3-d01a849435c4666fef134914c9d450e6feb43ebf.obj"/>
+    <mesh name="iiwa14/band" class="iiwa14/" file="band-171a65a32e8ddd7fc83d54c7252fcdf22592941f.obj"/>
+    <mesh name="iiwa14/kuka" class="iiwa14/" file="kuka-aad24ecacb8b6c07de184d60a6e9678c7458d1be.obj"/>
+    <mesh name="iiwa14/link_4_orange" class="iiwa14/" file="link_4_orange-fdabe7160b9c7d424a5a08bf79e0c12f1ed2b0f0.obj"/>
+    <mesh name="iiwa14/link_4_grey" class="iiwa14/" file="link_4_grey-653c66bc0d7d4089b87f6b78016c4fa02c3e82dd.obj"/>
+    <mesh name="iiwa14/link_5" class="iiwa14/" file="link_5-2fc0b2e3cd89f3d596155efec9d5d97994186ae2.obj"/>
+    <mesh name="iiwa14/link_6_orange" class="iiwa14/" file="link_6_orange-f1650a80653de711bf43548bac7b07d7939a20fc.obj"/>
+    <mesh name="iiwa14/link_6_grey" class="iiwa14/" file="link_6_grey-f841107d520b2b25931f595e8320c5747a54156d.obj"/>
+    <mesh name="iiwa14/link_7" class="iiwa14/" file="link_7-8471d29fe88b36bc49c983363442dc52c7543820.obj"/>
+    <material name="iiwa14/Dual_wrist_camera/metal" class="iiwa14/Dual_wrist_camera/" rgba="0.57999999999999996 0.57999999999999996 0.57999999999999996 1"/>
+    <material name="iiwa14/Dual_wrist_camera/silicone" class="iiwa14/Dual_wrist_camera/" rgba="0.18820000000000001 0.18820000000000001 0.18820000000000001 1"/>
+    <material name="iiwa14/Dual_wrist_camera/black" class="iiwa14/Dual_wrist_camera/" rgba="0.14899999999999999 0.14899999999999999 0.14899999999999999 1"/>
+    <mesh name="iiwa14/Dual_wrist_camera/base" class="iiwa14/Dual_wrist_camera/" file="base-a4d2d201ee5343e139ddf00a81ecb0fc11111827.stl"/>
+    <mesh name="iiwa14/Dual_wrist_camera/base_coupling" class="iiwa14/Dual_wrist_camera/" file="base_coupling-5dc263584666eb62235bb379091c2c724f30e702.stl"/>
+    <mesh name="iiwa14/Dual_wrist_camera/c-a01-85-open" class="iiwa14/Dual_wrist_camera/" file="c-a01-85-open-9cadd151ea18a491101846bff182c9359abd29d5.stl"/>
+    <mesh name="iiwa14/Dual_wrist_camera/driver" class="iiwa14/Dual_wrist_camera/" file="driver-b87c7efc75630f445bd2af1396851196311ec8f3.stl"/>
+    <mesh name="iiwa14/Dual_wrist_camera/coupler" class="iiwa14/Dual_wrist_camera/" file="coupler-9a1e8603255fc35af8254a65e83f07415abd1940.stl"/>
+    <mesh name="iiwa14/Dual_wrist_camera/spring_link" class="iiwa14/Dual_wrist_camera/" file="spring_link-a9733f8d256195fc5f3686024e963521fe38ac94.stl"/>
+    <mesh name="iiwa14/Dual_wrist_camera/follower" class="iiwa14/Dual_wrist_camera/" file="follower-c1718098ce0ba2dc787f4fb9132d32df5a08893c.stl"/>
+    <mesh name="iiwa14/Dual_wrist_camera/tongue" class="iiwa14/Dual_wrist_camera/" file="tongue-af8be764e418bbe81a7a51cb271048a590c62467.stl"/>
+    <material name="iiwa14_1/gray" class="iiwa14_1/iiwa" rgba="0.40000000000000002 0.40000000000000002 0.40000000000000002 1"/>
+    <material name="iiwa14_1/light_gray" class="iiwa14_1/iiwa" rgba="0.59999999999999998 0.59999999999999998 0.59999999999999998 1"/>
+    <material name="iiwa14_1/black" class="iiwa14_1/iiwa" rgba="0 0 0 1"/>
+    <material name="iiwa14_1/orange" class="iiwa14_1/iiwa" rgba="1 0.42352899999999999 0.039215699999999999 1"/>
+    <mesh name="iiwa14_1/link_0" class="iiwa14_1/" file="link_0-baabeeb7011606590600793859d7403e5a285b9a.obj"/>
+    <mesh name="iiwa14_1/link_1" class="iiwa14_1/" file="link_1-c60fc4e4431959600915e42c8df1ef280600cdcc.obj"/>
+    <mesh name="iiwa14_1/link_2_orange" class="iiwa14_1/" file="link_2_orange-d3260b57d9e6164a7c0622295ce4723efad5a2c2.obj"/>
+    <mesh name="iiwa14_1/link_2_grey" class="iiwa14_1/" file="link_2_grey-04d5bb08f35433038e492c56f5b16cabaad145f4.obj"/>
+    <mesh name="iiwa14_1/link_3" class="iiwa14_1/" file="link_3-d01a849435c4666fef134914c9d450e6feb43ebf.obj"/>
+    <mesh name="iiwa14_1/band" class="iiwa14_1/" file="band-171a65a32e8ddd7fc83d54c7252fcdf22592941f.obj"/>
+    <mesh name="iiwa14_1/kuka" class="iiwa14_1/" file="kuka-aad24ecacb8b6c07de184d60a6e9678c7458d1be.obj"/>
+    <mesh name="iiwa14_1/link_4_orange" class="iiwa14_1/" file="link_4_orange-fdabe7160b9c7d424a5a08bf79e0c12f1ed2b0f0.obj"/>
+    <mesh name="iiwa14_1/link_4_grey" class="iiwa14_1/" file="link_4_grey-653c66bc0d7d4089b87f6b78016c4fa02c3e82dd.obj"/>
+    <mesh name="iiwa14_1/link_5" class="iiwa14_1/" file="link_5-2fc0b2e3cd89f3d596155efec9d5d97994186ae2.obj"/>
+    <mesh name="iiwa14_1/link_6_orange" class="iiwa14_1/" file="link_6_orange-f1650a80653de711bf43548bac7b07d7939a20fc.obj"/>
+    <mesh name="iiwa14_1/link_6_grey" class="iiwa14_1/" file="link_6_grey-f841107d520b2b25931f595e8320c5747a54156d.obj"/>
+    <mesh name="iiwa14_1/link_7" class="iiwa14_1/" file="link_7-8471d29fe88b36bc49c983363442dc52c7543820.obj"/>
+    <material name="iiwa14_1/Dual_wrist_camera/metal" class="iiwa14_1/Dual_wrist_camera/" rgba="0.57999999999999996 0.57999999999999996 0.57999999999999996 1"/>
+    <material name="iiwa14_1/Dual_wrist_camera/silicone" class="iiwa14_1/Dual_wrist_camera/" rgba="0.18820000000000001 0.18820000000000001 0.18820000000000001 1"/>
+    <material name="iiwa14_1/Dual_wrist_camera/black" class="iiwa14_1/Dual_wrist_camera/" rgba="0.14899999999999999 0.14899999999999999 0.14899999999999999 1"/>
+    <mesh name="iiwa14_1/Dual_wrist_camera/base" class="iiwa14_1/Dual_wrist_camera/" file="base-a4d2d201ee5343e139ddf00a81ecb0fc11111827.stl"/>
+    <mesh name="iiwa14_1/Dual_wrist_camera/base_coupling" class="iiwa14_1/Dual_wrist_camera/" file="base_coupling-5dc263584666eb62235bb379091c2c724f30e702.stl"/>
+    <mesh name="iiwa14_1/Dual_wrist_camera/c-a01-85-open" class="iiwa14_1/Dual_wrist_camera/" file="c-a01-85-open-9cadd151ea18a491101846bff182c9359abd29d5.stl"/>
+    <mesh name="iiwa14_1/Dual_wrist_camera/driver" class="iiwa14_1/Dual_wrist_camera/" file="driver-b87c7efc75630f445bd2af1396851196311ec8f3.stl"/>
+    <mesh name="iiwa14_1/Dual_wrist_camera/coupler" class="iiwa14_1/Dual_wrist_camera/" file="coupler-9a1e8603255fc35af8254a65e83f07415abd1940.stl"/>
+    <mesh name="iiwa14_1/Dual_wrist_camera/spring_link" class="iiwa14_1/Dual_wrist_camera/" file="spring_link-a9733f8d256195fc5f3686024e963521fe38ac94.stl"/>
+    <mesh name="iiwa14_1/Dual_wrist_camera/follower" class="iiwa14_1/Dual_wrist_camera/" file="follower-c1718098ce0ba2dc787f4fb9132d32df5a08893c.stl"/>
+    <mesh name="iiwa14_1/Dual_wrist_camera/tongue" class="iiwa14_1/Dual_wrist_camera/" file="tongue-af8be764e418bbe81a7a51cb271048a590c62467.stl"/>
+  </asset>
+  <worldbody>
+    <site name="left_arm_mount" class="/" pos="0 0.5 0"/>
+    <body pos="0 0.5 0" name="iiwa14/">
+      <light name="iiwa14/top" class="iiwa14/" mode="trackcom" pos="0 0 2"/>
+      <body name="iiwa14/base" childclass="iiwa14/iiwa">
+        <inertial pos="-0.10000000000000001 0 0.070000000000000007" mass="5" diaginertia="0.050000000000000003 0.059999999999999998 0.029999999999999999"/>
+        <geom name="iiwa14//unnamed_geom_0" class="iiwa14/visual" mesh="iiwa14/link_0"/>
+        <geom name="iiwa14//unnamed_geom_1" class="iiwa14/collision" size="0.12" pos="0 0 0.029999999999999999"/>
+        <geom name="iiwa14//unnamed_geom_2" class="iiwa14/collision" size="0.080000000000000002" pos="-0.080000000000000002 0 0.10299999999999999"/>
+        <geom name="iiwa14//unnamed_geom_3" class="iiwa14/collision" size="0.080000000000000002" pos="-0.080000000000000002 0 0.040000000000000001"/>
+        <geom name="iiwa14//unnamed_geom_4" class="iiwa14/collision" size="0.10000000000000001" pos="0 0 0.14000000000000001"/>
+        <body name="iiwa14/link1" pos="0 0 0.1575">
+          <inertial pos="0 -0.029999999999999999 0.12" mass="5.7599999999999998" diaginertia="0.033300000000000003 0.033000000000000002 0.0123"/>
+          <joint name="iiwa14/joint1" class="iiwa14/joint1"/>
+          <geom name="iiwa14//unnamed_geom_5" class="iiwa14/visual" mesh="iiwa14/link_1"/>
+          <geom name="iiwa14//unnamed_geom_6" class="iiwa14/collision" size="0.080000000000000002" pos="0 0 -0.00050000000000000001"/>
+          <geom name="iiwa14//unnamed_geom_7" class="iiwa14/collision" size="0.074999999999999997" pos="0.01 -0.025000000000000001 0.042500000000000003"/>
+          <geom name="iiwa14//unnamed_geom_8" class="iiwa14/collision" size="0.074999999999999997" pos="-0.01 -0.025000000000000001 0.042500000000000003"/>
+          <geom name="iiwa14//unnamed_geom_9" class="iiwa14/collision" size="0.070000000000000007" pos="0.01 -0.044999999999999998 0.10249999999999999"/>
+          <geom name="iiwa14//unnamed_geom_10" class="iiwa14/collision" size="0.070000000000000007" pos="-0.01 -0.044999999999999998 0.10249999999999999"/>
+          <body name="iiwa14/link2" pos="0 0 0.20250000000000001" quat="0 0 1 1">
+            <inertial pos="0.00029999999999999997 0.058999999999999997 0.042000000000000003" quat="0 0 1 1" mass="6.3499999999999996" diaginertia="0.030499999999999999 0.0304 0.010999999999999999"/>
+            <joint name="iiwa14/joint2" class="iiwa14/joint2"/>
+            <geom name="iiwa14//unnamed_geom_11" class="iiwa14/visual" material="iiwa14/orange" mesh="iiwa14/link_2_orange"/>
+            <geom name="iiwa14//unnamed_geom_12" class="iiwa14/visual" mesh="iiwa14/link_2_grey"/>
+            <geom name="iiwa14//unnamed_geom_13" class="iiwa14/collision" size="0.095000000000000001" pos="0 0 -0.01"/>
+            <geom name="iiwa14//unnamed_geom_14" class="iiwa14/collision" size="0.089999999999999997" pos="0 0 0.044999999999999998"/>
+            <geom name="iiwa14//unnamed_geom_15" class="iiwa14/collision" size="0.070000000000000007" pos="-0.01 0.040000000000000001 0.053999999999999999"/>
+            <geom name="iiwa14//unnamed_geom_16" class="iiwa14/collision" size="0.065000000000000002" pos="-0.01 0.089999999999999997 0.040000000000000001"/>
+            <geom name="iiwa14//unnamed_geom_17" class="iiwa14/collision" size="0.065000000000000002" pos="-0.01 0.13 0.02"/>
+            <geom name="iiwa14//unnamed_geom_18" class="iiwa14/collision" size="0.070000000000000007" pos="0.01 0.040000000000000001 0.053999999999999999"/>
+            <geom name="iiwa14//unnamed_geom_19" class="iiwa14/collision" size="0.065000000000000002" pos="0.01 0.089999999999999997 0.040000000000000001"/>
+            <geom name="iiwa14//unnamed_geom_20" class="iiwa14/collision" size="0.065000000000000002" pos="0.01 0.13 0.02"/>
+            <geom name="iiwa14//unnamed_geom_21" class="iiwa14/collision" size="0.074999999999999997" pos="0 0.17999999999999999 0"/>
+            <body name="iiwa14/link3" pos="0 0.20449999999999999 0" quat="0 0 1 1">
+              <inertial pos="0 0.029999999999999999 0.13" mass="3.5" diaginertia="0.025000000000000001 0.023800000000000002 0.0076"/>
+              <joint name="iiwa14/joint3" class="iiwa14/joint1"/>
+              <geom name="iiwa14//unnamed_geom_22" class="iiwa14/visual" mesh="iiwa14/link_3"/>
+              <geom name="iiwa14//unnamed_geom_23" class="iiwa14/visual" material="iiwa14/light_gray" mesh="iiwa14/band"/>
+              <geom name="iiwa14//unnamed_geom_24" class="iiwa14/visual" material="iiwa14/black" mesh="iiwa14/kuka"/>
+              <geom name="iiwa14//unnamed_geom_25" class="iiwa14/collision" size="0.074999999999999997" pos="0 0 0.035499999999999997"/>
+              <geom name="iiwa14//unnamed_geom_26" class="iiwa14/collision" size="0.059999999999999998" pos="0.01 0.023 0.085500000000000007"/>
+              <geom name="iiwa14//unnamed_geom_27" class="iiwa14/collision" size="0.055" pos="0.01 0.048000000000000001 0.1255"/>
+              <geom name="iiwa14//unnamed_geom_28" class="iiwa14/collision" size="0.059999999999999998" pos="0.01 0.056000000000000001 0.17549999999999999"/>
+              <geom name="iiwa14//unnamed_geom_29" class="iiwa14/collision" size="0.059999999999999998" pos="-0.01 0.023 0.085500000000000007"/>
+              <geom name="iiwa14//unnamed_geom_30" class="iiwa14/collision" size="0.055" pos="-0.01 0.048000000000000001 0.1255"/>
+              <geom name="iiwa14//unnamed_geom_31" class="iiwa14/collision" size="0.059999999999999998" pos="-0.01 0.056000000000000001 0.17549999999999999"/>
+              <geom name="iiwa14//unnamed_geom_32" class="iiwa14/collision" size="0.074999999999999997" pos="0 0.044999999999999998 0.2155"/>
+              <geom name="iiwa14//unnamed_geom_33" class="iiwa14/collision" size="0.074999999999999997" pos="0 0 0.2155"/>
+              <body name="iiwa14/link4" pos="0 0 0.2155" quat="1 1 0 0">
+                <inertial pos="0 0.067000000000000004 0.034000000000000002" quat="1 1 0 0" mass="3.5" diaginertia="0.017000000000000001 0.016400000000000001 0.0060000000000000001"/>
+                <joint name="iiwa14/joint4" class="iiwa14/joint2"/>
+                <geom name="iiwa14//unnamed_geom_34" class="iiwa14/visual" material="iiwa14/orange" mesh="iiwa14/link_4_orange"/>
+                <geom name="iiwa14//unnamed_geom_35" class="iiwa14/visual" mesh="iiwa14/link_4_grey"/>
+                <geom name="iiwa14//unnamed_geom_36" class="iiwa14/collision" size="0.078" pos="0 0.01 0.045999999999999999"/>
+                <geom name="iiwa14//unnamed_geom_37" class="iiwa14/collision" size="0.059999999999999998" pos="0.01 0.059999999999999998 0.051999999999999998"/>
+                <geom name="iiwa14//unnamed_geom_38" class="iiwa14/collision" size="0.065000000000000002" pos="0.01 0.12 0.034000000000000002"/>
+                <geom name="iiwa14//unnamed_geom_39" class="iiwa14/collision" size="0.059999999999999998" pos="-0.01 0.059999999999999998 0.051999999999999998"/>
+                <geom name="iiwa14//unnamed_geom_40" class="iiwa14/collision" size="0.065000000000000002" pos="-0.01 0.12 0.034000000000000002"/>
+                <geom name="iiwa14//unnamed_geom_41" class="iiwa14/collision" size="0.074999999999999997" pos="0 0.184 0"/>
+                <body name="iiwa14/link5" pos="0 0.1845 0" quat="0 0 1 1">
+                  <inertial pos="0.0001 0.021000000000000001 0.075999999999999998" mass="3.5" diaginertia="0.01 0.0086999999999999994 0.0044900000000000001"/>
+                  <joint name="iiwa14/joint5" class="iiwa14/joint1"/>
+                  <geom name="iiwa14//unnamed_geom_42" class="iiwa14/visual" mesh="iiwa14/link_5"/>
+                  <geom name="iiwa14//unnamed_geom_43" class="iiwa14/visual" material="iiwa14/light_gray" mesh="iiwa14/band"/>
+                  <geom name="iiwa14//unnamed_geom_44" class="iiwa14/visual" material="iiwa14/black" mesh="iiwa14/kuka"/>
+                  <geom name="iiwa14//unnamed_geom_45" class="iiwa14/collision" size="0.074999999999999997" pos="0 0 0.033500000000000002"/>
+                  <geom name="iiwa14//unnamed_geom_46" class="iiwa14/collision" size="0.050000000000000003" pos="-0.012 0.031 0.075499999999999998"/>
+                  <geom name="iiwa14//unnamed_geom_47" class="iiwa14/collision" size="0.050000000000000003" pos="0.012 0.031 0.075499999999999998"/>
+                  <geom name="iiwa14//unnamed_geom_48" class="iiwa14/collision" size="0.040000000000000001" pos="-0.012 0.059999999999999998 0.11550000000000001"/>
+                  <geom name="iiwa14//unnamed_geom_49" class="iiwa14/collision" size="0.040000000000000001" pos="0.012 0.059999999999999998 0.11550000000000001"/>
+                  <geom name="iiwa14//unnamed_geom_50" class="iiwa14/collision" size="0.040000000000000001" pos="-0.01 0.065000000000000002 0.16550000000000001"/>
+                  <geom name="iiwa14//unnamed_geom_51" class="iiwa14/collision" size="0.040000000000000001" pos="0.01 0.065000000000000002 0.16550000000000001"/>
+                  <geom name="iiwa14//unnamed_geom_52" class="iiwa14/collision" size="0.035000000000000003" pos="-0.012 0.065000000000000002 0.1855"/>
+                  <geom name="iiwa14//unnamed_geom_53" class="iiwa14/collision" size="0.035000000000000003" pos="0.012 0.065000000000000002 0.1855"/>
+                  <body name="iiwa14/link6" pos="0 0 0.2155" quat="1 1 0 0">
+                    <inertial pos="0 0.00059999999999999995 0.00040000000000000002" quat="1 1 0 0" mass="1.8" diaginertia="0.0048999999999999998 0.0047000000000000002 0.0035999999999999999"/>
+                    <joint name="iiwa14/joint6" class="iiwa14/joint2"/>
+                    <geom name="iiwa14//unnamed_geom_54" class="iiwa14/visual" material="iiwa14/orange" mesh="iiwa14/link_6_orange"/>
+                    <geom name="iiwa14//unnamed_geom_55" class="iiwa14/visual" mesh="iiwa14/link_6_grey"/>
+                    <geom name="iiwa14//unnamed_geom_56" class="iiwa14/collision" size="0.055" pos="0 0 -0.058999999999999997"/>
+                    <geom name="iiwa14//unnamed_geom_57" class="iiwa14/collision" size="0.065000000000000002" pos="0 -0.029999999999999999 0.010999999999999999"/>
+                    <geom name="iiwa14//unnamed_geom_58" class="iiwa14/collision" size="0.080000000000000002"/>
+                    <body name="iiwa14/link7" pos="0 0.081000000000000003 0" quat="0 0 1 1">
+                      <inertial pos="0 0 0.02" mass="1.2" diaginertia="0.001 0.001 0.001"/>
+                      <joint name="iiwa14/joint7" class="iiwa14/joint3"/>
+                      <geom name="iiwa14//unnamed_geom_59" class="iiwa14/visual" mesh="iiwa14/link_7"/>
+                      <geom name="iiwa14//unnamed_geom_60" class="iiwa14/collision" size="0.059999999999999998" pos="0 0 0.001"/>
+                      <site name="iiwa14/attachment_site" pos="0 0 0.044999999999999998"/>
+                      <body pos="0 0 0.044999999999999998" name="iiwa14/Dual_wrist_camera/">
+                        <body name="iiwa14/Dual_wrist_camera/base" childclass="iiwa14/Dual_wrist_camera/2f85">
+                          <inertial pos="0 -2.7039400000000001e-05 0.035467499999999999" quat="1 -0.00152849 0 0" mass="0.77744100000000005" diaginertia="0.00026028500000000002 0.000225381 0.00015270799999999999"/>
+                          <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_0" class="iiwa14/Dual_wrist_camera/visual" pos="0 0 0.010800000000000001" quat="0 0 0 1" mesh="iiwa14/Dual_wrist_camera/base"/>
+                          <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_1" class="iiwa14/Dual_wrist_camera/visual" pos="0 0 0.0040000000000000001" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/base_coupling"/>
+                          <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_2" class="iiwa14/Dual_wrist_camera/visual" material="iiwa14/Dual_wrist_camera/metal" pos="0 0 0.010800000000000001" quat="1 0 0 0" mesh="iiwa14/Dual_wrist_camera/c-a01-85-open"/>
+                          <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_3" class="iiwa14/Dual_wrist_camera/collision" mesh="iiwa14/Dual_wrist_camera/base"/>
+                          <body name="iiwa14/Dual_wrist_camera/left_driver" pos="-0.030601099999999999 0.0047499999999999999 0.065704499999999999" quat="1 -1 0 0">
+                            <inertial pos="0 0.017754700000000002 0.00107314" quat="0.68130100000000005 0.73200299999999996 0 0" mass="0.0089956299999999993" diaginertia="1.72352e-06 1.6090599999999999e-06 3.22006e-07"/>
+                            <joint name="iiwa14/Dual_wrist_camera/left_driver_joint" class="iiwa14/Dual_wrist_camera/driver"/>
+                            <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_4" class="iiwa14/Dual_wrist_camera/visual" material="iiwa14/Dual_wrist_camera/metal" pos="0.030601099999999999 0.054904500000000002 -0.0047000000000000002" quat="1 1 0 0" mesh="iiwa14/Dual_wrist_camera/driver"/>
+                            <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_5" class="iiwa14/Dual_wrist_camera/collision" pos="0.030601099999999999 0.054904500000000002 -0.0047000000000000002" quat="1 1 0 0" mesh="iiwa14/Dual_wrist_camera/driver"/>
+                            <body name="iiwa14/Dual_wrist_camera/left_coupler" pos="-0.031424899999999999 0.0045322299999999999 -0.010200000000000001" quat="0 0 0 1">
+                              <inertial pos="0 0.0030120899999999998 0.023217499999999999" quat="0.70563600000000004 -0.045590400000000003 0.045590400000000003 0.70563600000000004" mass="0.0140974" diaginertia="4.1620600000000001e-06 3.5221600000000001e-06 8.8813100000000003e-07"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_6" class="iiwa14/Dual_wrist_camera/visual" pos="-0.062025999999999998 -0.050372300000000002 0.0054999999999999997" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/coupler"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_7" class="iiwa14/Dual_wrist_camera/collision" pos="-0.062025999999999998 -0.050372300000000002 0.0054999999999999997" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/coupler"/>
+                            </body>
+                          </body>
+                          <body name="iiwa14/Dual_wrist_camera/left_spring_link" pos="-0.012699999999999999 -0.012 0.072220000000000006" quat="1 -1 0 0">
+                            <inertial pos="-8.6500500000000008e-09 0.018162399999999999 0.021265800000000001" quat="0.66340299999999996 -0.24473700000000001 0.24473700000000001 0.66340299999999996" mass="0.022164199999999998" diaginertia="8.9685299999999993e-06 6.7173299999999996e-06 2.6393100000000001e-06"/>
+                            <joint name="iiwa14/Dual_wrist_camera/left_spring_link_joint" class="iiwa14/Dual_wrist_camera/spring_link"/>
+                            <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_8" class="iiwa14/Dual_wrist_camera/visual" type="mesh" pos="0.012699999999999999 0.061420000000000002 0.01205" quat="1 1 0 0" mesh="iiwa14/Dual_wrist_camera/spring_link"/>
+                            <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_9" class="iiwa14/Dual_wrist_camera/collision" type="mesh" pos="0.012699999999999999 0.061420000000000002 0.01205" quat="1 1 0 0" mesh="iiwa14/Dual_wrist_camera/spring_link"/>
+                            <body name="iiwa14/Dual_wrist_camera/left_follower" pos="-0.038207900000000003 -0.042500299999999998 0.0029499999999999999" quat="0 -1 -1.9023100000000001e-05 0">
+                              <inertial pos="0 -0.011046 0.012478599999999999" quat="1 0.16639999999999999 0 0" mass="0.012522200000000001" diaginertia="2.6741500000000001e-06 2.4559000000000001e-06 6.0203100000000003e-07"/>
+                              <joint name="iiwa14/Dual_wrist_camera/left_follower" class="iiwa14/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_10" class="iiwa14/Dual_wrist_camera/visual" type="mesh" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_11" class="iiwa14/Dual_wrist_camera/visual" type="mesh" material="iiwa14/Dual_wrist_camera/metal" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/tongue"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_12" class="iiwa14/Dual_wrist_camera/collision" type="mesh" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_13" class="iiwa14/Dual_wrist_camera/collision" type="mesh" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/tongue"/>
+                              <body name="iiwa14/Dual_wrist_camera/left_pad" pos="-0.037789700000000002 -0.10391599999999999 -0.0091000000000000004" quat="1 -1 0 0">
+                                <geom name="iiwa14/Dual_wrist_camera/left_pad1" class="iiwa14/Dual_wrist_camera/pad_box1"/>
+                                <geom name="iiwa14/Dual_wrist_camera/left_pad2" class="iiwa14/Dual_wrist_camera/pad_box2"/>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="iiwa14/Dual_wrist_camera/right_driver" pos="0.030601099999999999 -0.0047499999999999999 0.065704499999999999" quat="0 0 -1 1">
+                            <inertial pos="2.96931e-12 0.017754700000000002 0.00107314" quat="0.68130100000000005 0.73200299999999996 0 0" mass="0.0089956299999999993" diaginertia="1.72352e-06 1.6090599999999999e-06 3.22006e-07"/>
+                            <joint name="iiwa14/Dual_wrist_camera/right_driver_joint" class="iiwa14/Dual_wrist_camera/driver"/>
+                            <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_16" class="iiwa14/Dual_wrist_camera/visual" material="iiwa14/Dual_wrist_camera/metal" pos="0.030601099999999999 0.054904500000000002 -0.0047000000000000002" quat="1 1 0 0" mesh="iiwa14/Dual_wrist_camera/driver"/>
+                            <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_17" class="iiwa14/Dual_wrist_camera/collision" pos="0.030601099999999999 0.054904500000000002 -0.0047000000000000002" quat="1 1 0 0" mesh="iiwa14/Dual_wrist_camera/driver"/>
+                            <body name="iiwa14/Dual_wrist_camera/right_coupler" pos="-0.031424899999999999 0.0045322299999999999 -0.010200000000000001" quat="0 0 0 1">
+                              <inertial pos="0 0.0030120899999999998 0.023217499999999999" quat="0.70563600000000004 -0.045590400000000003 0.045590400000000003 0.70563600000000004" mass="0.0140974" diaginertia="4.1620600000000001e-06 3.5221600000000001e-06 8.8813100000000003e-07"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_18" class="iiwa14/Dual_wrist_camera/visual" pos="-0.062025999999999998 -0.050372300000000002 0.0054999999999999997" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/coupler"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_19" class="iiwa14/Dual_wrist_camera/collision" pos="-0.062025999999999998 -0.050372300000000002 0.0054999999999999997" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/coupler"/>
+                            </body>
+                          </body>
+                          <body name="iiwa14/Dual_wrist_camera/right_spring_link" pos="0.012699999999999999 0.012 0.072220000000000006" quat="0 0 -1 1">
+                            <inertial pos="-8.6500500000000008e-09 0.018162399999999999 0.021265800000000001" quat="0.66340299999999996 -0.24473700000000001 0.24473700000000001 0.66340299999999996" mass="0.022164199999999998" diaginertia="8.9685299999999993e-06 6.7173299999999996e-06 2.6393100000000001e-06"/>
+                            <joint name="iiwa14/Dual_wrist_camera/right_spring_link_joint" class="iiwa14/Dual_wrist_camera/spring_link"/>
+                            <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_20" class="iiwa14/Dual_wrist_camera/visual" pos="0.012699999999999999 0.061420000000000002 0.01205" quat="1 1 0 0" mesh="iiwa14/Dual_wrist_camera/spring_link"/>
+                            <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_21" class="iiwa14/Dual_wrist_camera/collision" pos="0.012699999999999999 0.061420000000000002 0.01205" quat="1 1 0 0" mesh="iiwa14/Dual_wrist_camera/spring_link"/>
+                            <body name="iiwa14/Dual_wrist_camera/right_follower" pos="-0.038207900000000003 -0.042500299999999998 0.0029499999999999999" quat="0 -1 0 0">
+                              <inertial pos="0 -0.011046 0.012478599999999999" quat="1 0.16639999999999999 0 0" mass="0.012522200000000001" diaginertia="2.6741500000000001e-06 2.4559000000000001e-06 6.0203100000000003e-07"/>
+                              <joint name="iiwa14/Dual_wrist_camera/right_follower_joint" class="iiwa14/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_22" class="iiwa14/Dual_wrist_camera/visual" material="iiwa14/Dual_wrist_camera/metal" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/tongue"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_23" class="iiwa14/Dual_wrist_camera/visual" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_24" class="iiwa14/Dual_wrist_camera/collision" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/tongue"/>
+                              <geom name="iiwa14/Dual_wrist_camera//unnamed_geom_25" class="iiwa14/Dual_wrist_camera/collision" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14/Dual_wrist_camera/follower"/>
+                              <body name="iiwa14/Dual_wrist_camera/right_pad" pos="-0.037789700000000002 -0.10391599999999999 -0.0091000000000000004" quat="1 -1 0 0">
+                                <geom name="iiwa14/Dual_wrist_camera/right_pad1" class="iiwa14/Dual_wrist_camera/pad_box1"/>
+                                <geom name="iiwa14/Dual_wrist_camera/right_pad2" class="iiwa14/Dual_wrist_camera/pad_box2"/>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <site name="right_arm_mount" class="/" pos="0 -0.5 0"/>
+    <body pos="0 -0.5 0" name="iiwa14_1/">
+      <light name="iiwa14_1/top" class="iiwa14_1/" mode="trackcom" pos="0 0 2"/>
+      <body name="iiwa14_1/base" childclass="iiwa14_1/iiwa">
+        <inertial pos="-0.10000000000000001 0 0.070000000000000007" mass="5" diaginertia="0.050000000000000003 0.059999999999999998 0.029999999999999999"/>
+        <geom name="iiwa14_1//unnamed_geom_0" class="iiwa14_1/visual" mesh="iiwa14_1/link_0"/>
+        <geom name="iiwa14_1//unnamed_geom_1" class="iiwa14_1/collision" size="0.12" pos="0 0 0.029999999999999999"/>
+        <geom name="iiwa14_1//unnamed_geom_2" class="iiwa14_1/collision" size="0.080000000000000002" pos="-0.080000000000000002 0 0.10299999999999999"/>
+        <geom name="iiwa14_1//unnamed_geom_3" class="iiwa14_1/collision" size="0.080000000000000002" pos="-0.080000000000000002 0 0.040000000000000001"/>
+        <geom name="iiwa14_1//unnamed_geom_4" class="iiwa14_1/collision" size="0.10000000000000001" pos="0 0 0.14000000000000001"/>
+        <body name="iiwa14_1/link1" pos="0 0 0.1575">
+          <inertial pos="0 -0.029999999999999999 0.12" mass="5.7599999999999998" diaginertia="0.033300000000000003 0.033000000000000002 0.0123"/>
+          <joint name="iiwa14_1/joint1" class="iiwa14_1/joint1"/>
+          <geom name="iiwa14_1//unnamed_geom_5" class="iiwa14_1/visual" mesh="iiwa14_1/link_1"/>
+          <geom name="iiwa14_1//unnamed_geom_6" class="iiwa14_1/collision" size="0.080000000000000002" pos="0 0 -0.00050000000000000001"/>
+          <geom name="iiwa14_1//unnamed_geom_7" class="iiwa14_1/collision" size="0.074999999999999997" pos="0.01 -0.025000000000000001 0.042500000000000003"/>
+          <geom name="iiwa14_1//unnamed_geom_8" class="iiwa14_1/collision" size="0.074999999999999997" pos="-0.01 -0.025000000000000001 0.042500000000000003"/>
+          <geom name="iiwa14_1//unnamed_geom_9" class="iiwa14_1/collision" size="0.070000000000000007" pos="0.01 -0.044999999999999998 0.10249999999999999"/>
+          <geom name="iiwa14_1//unnamed_geom_10" class="iiwa14_1/collision" size="0.070000000000000007" pos="-0.01 -0.044999999999999998 0.10249999999999999"/>
+          <body name="iiwa14_1/link2" pos="0 0 0.20250000000000001" quat="0 0 1 1">
+            <inertial pos="0.00029999999999999997 0.058999999999999997 0.042000000000000003" quat="0 0 1 1" mass="6.3499999999999996" diaginertia="0.030499999999999999 0.0304 0.010999999999999999"/>
+            <joint name="iiwa14_1/joint2" class="iiwa14_1/joint2"/>
+            <geom name="iiwa14_1//unnamed_geom_11" class="iiwa14_1/visual" material="iiwa14_1/orange" mesh="iiwa14_1/link_2_orange"/>
+            <geom name="iiwa14_1//unnamed_geom_12" class="iiwa14_1/visual" mesh="iiwa14_1/link_2_grey"/>
+            <geom name="iiwa14_1//unnamed_geom_13" class="iiwa14_1/collision" size="0.095000000000000001" pos="0 0 -0.01"/>
+            <geom name="iiwa14_1//unnamed_geom_14" class="iiwa14_1/collision" size="0.089999999999999997" pos="0 0 0.044999999999999998"/>
+            <geom name="iiwa14_1//unnamed_geom_15" class="iiwa14_1/collision" size="0.070000000000000007" pos="-0.01 0.040000000000000001 0.053999999999999999"/>
+            <geom name="iiwa14_1//unnamed_geom_16" class="iiwa14_1/collision" size="0.065000000000000002" pos="-0.01 0.089999999999999997 0.040000000000000001"/>
+            <geom name="iiwa14_1//unnamed_geom_17" class="iiwa14_1/collision" size="0.065000000000000002" pos="-0.01 0.13 0.02"/>
+            <geom name="iiwa14_1//unnamed_geom_18" class="iiwa14_1/collision" size="0.070000000000000007" pos="0.01 0.040000000000000001 0.053999999999999999"/>
+            <geom name="iiwa14_1//unnamed_geom_19" class="iiwa14_1/collision" size="0.065000000000000002" pos="0.01 0.089999999999999997 0.040000000000000001"/>
+            <geom name="iiwa14_1//unnamed_geom_20" class="iiwa14_1/collision" size="0.065000000000000002" pos="0.01 0.13 0.02"/>
+            <geom name="iiwa14_1//unnamed_geom_21" class="iiwa14_1/collision" size="0.074999999999999997" pos="0 0.17999999999999999 0"/>
+            <body name="iiwa14_1/link3" pos="0 0.20449999999999999 0" quat="0 0 1 1">
+              <inertial pos="0 0.029999999999999999 0.13" mass="3.5" diaginertia="0.025000000000000001 0.023800000000000002 0.0076"/>
+              <joint name="iiwa14_1/joint3" class="iiwa14_1/joint1"/>
+              <geom name="iiwa14_1//unnamed_geom_22" class="iiwa14_1/visual" mesh="iiwa14_1/link_3"/>
+              <geom name="iiwa14_1//unnamed_geom_23" class="iiwa14_1/visual" material="iiwa14_1/light_gray" mesh="iiwa14_1/band"/>
+              <geom name="iiwa14_1//unnamed_geom_24" class="iiwa14_1/visual" material="iiwa14_1/black" mesh="iiwa14_1/kuka"/>
+              <geom name="iiwa14_1//unnamed_geom_25" class="iiwa14_1/collision" size="0.074999999999999997" pos="0 0 0.035499999999999997"/>
+              <geom name="iiwa14_1//unnamed_geom_26" class="iiwa14_1/collision" size="0.059999999999999998" pos="0.01 0.023 0.085500000000000007"/>
+              <geom name="iiwa14_1//unnamed_geom_27" class="iiwa14_1/collision" size="0.055" pos="0.01 0.048000000000000001 0.1255"/>
+              <geom name="iiwa14_1//unnamed_geom_28" class="iiwa14_1/collision" size="0.059999999999999998" pos="0.01 0.056000000000000001 0.17549999999999999"/>
+              <geom name="iiwa14_1//unnamed_geom_29" class="iiwa14_1/collision" size="0.059999999999999998" pos="-0.01 0.023 0.085500000000000007"/>
+              <geom name="iiwa14_1//unnamed_geom_30" class="iiwa14_1/collision" size="0.055" pos="-0.01 0.048000000000000001 0.1255"/>
+              <geom name="iiwa14_1//unnamed_geom_31" class="iiwa14_1/collision" size="0.059999999999999998" pos="-0.01 0.056000000000000001 0.17549999999999999"/>
+              <geom name="iiwa14_1//unnamed_geom_32" class="iiwa14_1/collision" size="0.074999999999999997" pos="0 0.044999999999999998 0.2155"/>
+              <geom name="iiwa14_1//unnamed_geom_33" class="iiwa14_1/collision" size="0.074999999999999997" pos="0 0 0.2155"/>
+              <body name="iiwa14_1/link4" pos="0 0 0.2155" quat="1 1 0 0">
+                <inertial pos="0 0.067000000000000004 0.034000000000000002" quat="1 1 0 0" mass="3.5" diaginertia="0.017000000000000001 0.016400000000000001 0.0060000000000000001"/>
+                <joint name="iiwa14_1/joint4" class="iiwa14_1/joint2"/>
+                <geom name="iiwa14_1//unnamed_geom_34" class="iiwa14_1/visual" material="iiwa14_1/orange" mesh="iiwa14_1/link_4_orange"/>
+                <geom name="iiwa14_1//unnamed_geom_35" class="iiwa14_1/visual" mesh="iiwa14_1/link_4_grey"/>
+                <geom name="iiwa14_1//unnamed_geom_36" class="iiwa14_1/collision" size="0.078" pos="0 0.01 0.045999999999999999"/>
+                <geom name="iiwa14_1//unnamed_geom_37" class="iiwa14_1/collision" size="0.059999999999999998" pos="0.01 0.059999999999999998 0.051999999999999998"/>
+                <geom name="iiwa14_1//unnamed_geom_38" class="iiwa14_1/collision" size="0.065000000000000002" pos="0.01 0.12 0.034000000000000002"/>
+                <geom name="iiwa14_1//unnamed_geom_39" class="iiwa14_1/collision" size="0.059999999999999998" pos="-0.01 0.059999999999999998 0.051999999999999998"/>
+                <geom name="iiwa14_1//unnamed_geom_40" class="iiwa14_1/collision" size="0.065000000000000002" pos="-0.01 0.12 0.034000000000000002"/>
+                <geom name="iiwa14_1//unnamed_geom_41" class="iiwa14_1/collision" size="0.074999999999999997" pos="0 0.184 0"/>
+                <body name="iiwa14_1/link5" pos="0 0.1845 0" quat="0 0 1 1">
+                  <inertial pos="0.0001 0.021000000000000001 0.075999999999999998" mass="3.5" diaginertia="0.01 0.0086999999999999994 0.0044900000000000001"/>
+                  <joint name="iiwa14_1/joint5" class="iiwa14_1/joint1"/>
+                  <geom name="iiwa14_1//unnamed_geom_42" class="iiwa14_1/visual" mesh="iiwa14_1/link_5"/>
+                  <geom name="iiwa14_1//unnamed_geom_43" class="iiwa14_1/visual" material="iiwa14_1/light_gray" mesh="iiwa14_1/band"/>
+                  <geom name="iiwa14_1//unnamed_geom_44" class="iiwa14_1/visual" material="iiwa14_1/black" mesh="iiwa14_1/kuka"/>
+                  <geom name="iiwa14_1//unnamed_geom_45" class="iiwa14_1/collision" size="0.074999999999999997" pos="0 0 0.033500000000000002"/>
+                  <geom name="iiwa14_1//unnamed_geom_46" class="iiwa14_1/collision" size="0.050000000000000003" pos="-0.012 0.031 0.075499999999999998"/>
+                  <geom name="iiwa14_1//unnamed_geom_47" class="iiwa14_1/collision" size="0.050000000000000003" pos="0.012 0.031 0.075499999999999998"/>
+                  <geom name="iiwa14_1//unnamed_geom_48" class="iiwa14_1/collision" size="0.040000000000000001" pos="-0.012 0.059999999999999998 0.11550000000000001"/>
+                  <geom name="iiwa14_1//unnamed_geom_49" class="iiwa14_1/collision" size="0.040000000000000001" pos="0.012 0.059999999999999998 0.11550000000000001"/>
+                  <geom name="iiwa14_1//unnamed_geom_50" class="iiwa14_1/collision" size="0.040000000000000001" pos="-0.01 0.065000000000000002 0.16550000000000001"/>
+                  <geom name="iiwa14_1//unnamed_geom_51" class="iiwa14_1/collision" size="0.040000000000000001" pos="0.01 0.065000000000000002 0.16550000000000001"/>
+                  <geom name="iiwa14_1//unnamed_geom_52" class="iiwa14_1/collision" size="0.035000000000000003" pos="-0.012 0.065000000000000002 0.1855"/>
+                  <geom name="iiwa14_1//unnamed_geom_53" class="iiwa14_1/collision" size="0.035000000000000003" pos="0.012 0.065000000000000002 0.1855"/>
+                  <body name="iiwa14_1/link6" pos="0 0 0.2155" quat="1 1 0 0">
+                    <inertial pos="0 0.00059999999999999995 0.00040000000000000002" quat="1 1 0 0" mass="1.8" diaginertia="0.0048999999999999998 0.0047000000000000002 0.0035999999999999999"/>
+                    <joint name="iiwa14_1/joint6" class="iiwa14_1/joint2"/>
+                    <geom name="iiwa14_1//unnamed_geom_54" class="iiwa14_1/visual" material="iiwa14_1/orange" mesh="iiwa14_1/link_6_orange"/>
+                    <geom name="iiwa14_1//unnamed_geom_55" class="iiwa14_1/visual" mesh="iiwa14_1/link_6_grey"/>
+                    <geom name="iiwa14_1//unnamed_geom_56" class="iiwa14_1/collision" size="0.055" pos="0 0 -0.058999999999999997"/>
+                    <geom name="iiwa14_1//unnamed_geom_57" class="iiwa14_1/collision" size="0.065000000000000002" pos="0 -0.029999999999999999 0.010999999999999999"/>
+                    <geom name="iiwa14_1//unnamed_geom_58" class="iiwa14_1/collision" size="0.080000000000000002"/>
+                    <body name="iiwa14_1/link7" pos="0 0.081000000000000003 0" quat="0 0 1 1">
+                      <inertial pos="0 0 0.02" mass="1.2" diaginertia="0.001 0.001 0.001"/>
+                      <joint name="iiwa14_1/joint7" class="iiwa14_1/joint3"/>
+                      <geom name="iiwa14_1//unnamed_geom_59" class="iiwa14_1/visual" mesh="iiwa14_1/link_7"/>
+                      <geom name="iiwa14_1//unnamed_geom_60" class="iiwa14_1/collision" size="0.059999999999999998" pos="0 0 0.001"/>
+                      <site name="iiwa14_1/attachment_site" pos="0 0 0.044999999999999998"/>
+                      <body pos="0 0 0.044999999999999998" name="iiwa14_1/Dual_wrist_camera/">
+                        <body name="iiwa14_1/Dual_wrist_camera/base" childclass="iiwa14_1/Dual_wrist_camera/2f85">
+                          <inertial pos="0 -2.7039400000000001e-05 0.035467499999999999" quat="1 -0.00152849 0 0" mass="0.77744100000000005" diaginertia="0.00026028500000000002 0.000225381 0.00015270799999999999"/>
+                          <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_0" class="iiwa14_1/Dual_wrist_camera/visual" pos="0 0 0.010800000000000001" quat="0 0 0 1" mesh="iiwa14_1/Dual_wrist_camera/base"/>
+                          <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_1" class="iiwa14_1/Dual_wrist_camera/visual" pos="0 0 0.0040000000000000001" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/base_coupling"/>
+                          <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_2" class="iiwa14_1/Dual_wrist_camera/visual" material="iiwa14_1/Dual_wrist_camera/metal" pos="0 0 0.010800000000000001" quat="1 0 0 0" mesh="iiwa14_1/Dual_wrist_camera/c-a01-85-open"/>
+                          <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_3" class="iiwa14_1/Dual_wrist_camera/collision" mesh="iiwa14_1/Dual_wrist_camera/base"/>
+                          <body name="iiwa14_1/Dual_wrist_camera/left_driver" pos="-0.030601099999999999 0.0047499999999999999 0.065704499999999999" quat="1 -1 0 0">
+                            <inertial pos="0 0.017754700000000002 0.00107314" quat="0.68130100000000005 0.73200299999999996 0 0" mass="0.0089956299999999993" diaginertia="1.72352e-06 1.6090599999999999e-06 3.22006e-07"/>
+                            <joint name="iiwa14_1/Dual_wrist_camera/left_driver_joint" class="iiwa14_1/Dual_wrist_camera/driver"/>
+                            <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_4" class="iiwa14_1/Dual_wrist_camera/visual" material="iiwa14_1/Dual_wrist_camera/metal" pos="0.030601099999999999 0.054904500000000002 -0.0047000000000000002" quat="1 1 0 0" mesh="iiwa14_1/Dual_wrist_camera/driver"/>
+                            <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_5" class="iiwa14_1/Dual_wrist_camera/collision" pos="0.030601099999999999 0.054904500000000002 -0.0047000000000000002" quat="1 1 0 0" mesh="iiwa14_1/Dual_wrist_camera/driver"/>
+                            <body name="iiwa14_1/Dual_wrist_camera/left_coupler" pos="-0.031424899999999999 0.0045322299999999999 -0.010200000000000001" quat="0 0 0 1">
+                              <inertial pos="0 0.0030120899999999998 0.023217499999999999" quat="0.70563600000000004 -0.045590400000000003 0.045590400000000003 0.70563600000000004" mass="0.0140974" diaginertia="4.1620600000000001e-06 3.5221600000000001e-06 8.8813100000000003e-07"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_6" class="iiwa14_1/Dual_wrist_camera/visual" pos="-0.062025999999999998 -0.050372300000000002 0.0054999999999999997" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/coupler"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_7" class="iiwa14_1/Dual_wrist_camera/collision" pos="-0.062025999999999998 -0.050372300000000002 0.0054999999999999997" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/coupler"/>
+                            </body>
+                          </body>
+                          <body name="iiwa14_1/Dual_wrist_camera/left_spring_link" pos="-0.012699999999999999 -0.012 0.072220000000000006" quat="1 -1 0 0">
+                            <inertial pos="-8.6500500000000008e-09 0.018162399999999999 0.021265800000000001" quat="0.66340299999999996 -0.24473700000000001 0.24473700000000001 0.66340299999999996" mass="0.022164199999999998" diaginertia="8.9685299999999993e-06 6.7173299999999996e-06 2.6393100000000001e-06"/>
+                            <joint name="iiwa14_1/Dual_wrist_camera/left_spring_link_joint" class="iiwa14_1/Dual_wrist_camera/spring_link"/>
+                            <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_8" class="iiwa14_1/Dual_wrist_camera/visual" type="mesh" pos="0.012699999999999999 0.061420000000000002 0.01205" quat="1 1 0 0" mesh="iiwa14_1/Dual_wrist_camera/spring_link"/>
+                            <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_9" class="iiwa14_1/Dual_wrist_camera/collision" type="mesh" pos="0.012699999999999999 0.061420000000000002 0.01205" quat="1 1 0 0" mesh="iiwa14_1/Dual_wrist_camera/spring_link"/>
+                            <body name="iiwa14_1/Dual_wrist_camera/left_follower" pos="-0.038207900000000003 -0.042500299999999998 0.0029499999999999999" quat="0 -1 -1.9023100000000001e-05 0">
+                              <inertial pos="0 -0.011046 0.012478599999999999" quat="1 0.16639999999999999 0 0" mass="0.012522200000000001" diaginertia="2.6741500000000001e-06 2.4559000000000001e-06 6.0203100000000003e-07"/>
+                              <joint name="iiwa14_1/Dual_wrist_camera/left_follower" class="iiwa14_1/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_10" class="iiwa14_1/Dual_wrist_camera/visual" type="mesh" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_11" class="iiwa14_1/Dual_wrist_camera/visual" type="mesh" material="iiwa14_1/Dual_wrist_camera/metal" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/tongue"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_12" class="iiwa14_1/Dual_wrist_camera/collision" type="mesh" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_13" class="iiwa14_1/Dual_wrist_camera/collision" type="mesh" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/tongue"/>
+                              <body name="iiwa14_1/Dual_wrist_camera/left_pad" pos="-0.037789700000000002 -0.10391599999999999 -0.0091000000000000004" quat="1 -1 0 0">
+                                <geom name="iiwa14_1/Dual_wrist_camera/left_pad1" class="iiwa14_1/Dual_wrist_camera/pad_box1"/>
+                                <geom name="iiwa14_1/Dual_wrist_camera/left_pad2" class="iiwa14_1/Dual_wrist_camera/pad_box2"/>
+                              </body>
+                            </body>
+                          </body>
+                          <body name="iiwa14_1/Dual_wrist_camera/right_driver" pos="0.030601099999999999 -0.0047499999999999999 0.065704499999999999" quat="0 0 -1 1">
+                            <inertial pos="2.96931e-12 0.017754700000000002 0.00107314" quat="0.68130100000000005 0.73200299999999996 0 0" mass="0.0089956299999999993" diaginertia="1.72352e-06 1.6090599999999999e-06 3.22006e-07"/>
+                            <joint name="iiwa14_1/Dual_wrist_camera/right_driver_joint" class="iiwa14_1/Dual_wrist_camera/driver"/>
+                            <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_16" class="iiwa14_1/Dual_wrist_camera/visual" material="iiwa14_1/Dual_wrist_camera/metal" pos="0.030601099999999999 0.054904500000000002 -0.0047000000000000002" quat="1 1 0 0" mesh="iiwa14_1/Dual_wrist_camera/driver"/>
+                            <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_17" class="iiwa14_1/Dual_wrist_camera/collision" pos="0.030601099999999999 0.054904500000000002 -0.0047000000000000002" quat="1 1 0 0" mesh="iiwa14_1/Dual_wrist_camera/driver"/>
+                            <body name="iiwa14_1/Dual_wrist_camera/right_coupler" pos="-0.031424899999999999 0.0045322299999999999 -0.010200000000000001" quat="0 0 0 1">
+                              <inertial pos="0 0.0030120899999999998 0.023217499999999999" quat="0.70563600000000004 -0.045590400000000003 0.045590400000000003 0.70563600000000004" mass="0.0140974" diaginertia="4.1620600000000001e-06 3.5221600000000001e-06 8.8813100000000003e-07"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_18" class="iiwa14_1/Dual_wrist_camera/visual" pos="-0.062025999999999998 -0.050372300000000002 0.0054999999999999997" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/coupler"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_19" class="iiwa14_1/Dual_wrist_camera/collision" pos="-0.062025999999999998 -0.050372300000000002 0.0054999999999999997" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/coupler"/>
+                            </body>
+                          </body>
+                          <body name="iiwa14_1/Dual_wrist_camera/right_spring_link" pos="0.012699999999999999 0.012 0.072220000000000006" quat="0 0 -1 1">
+                            <inertial pos="-8.6500500000000008e-09 0.018162399999999999 0.021265800000000001" quat="0.66340299999999996 -0.24473700000000001 0.24473700000000001 0.66340299999999996" mass="0.022164199999999998" diaginertia="8.9685299999999993e-06 6.7173299999999996e-06 2.6393100000000001e-06"/>
+                            <joint name="iiwa14_1/Dual_wrist_camera/right_spring_link_joint" class="iiwa14_1/Dual_wrist_camera/spring_link"/>
+                            <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_20" class="iiwa14_1/Dual_wrist_camera/visual" pos="0.012699999999999999 0.061420000000000002 0.01205" quat="1 1 0 0" mesh="iiwa14_1/Dual_wrist_camera/spring_link"/>
+                            <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_21" class="iiwa14_1/Dual_wrist_camera/collision" pos="0.012699999999999999 0.061420000000000002 0.01205" quat="1 1 0 0" mesh="iiwa14_1/Dual_wrist_camera/spring_link"/>
+                            <body name="iiwa14_1/Dual_wrist_camera/right_follower" pos="-0.038207900000000003 -0.042500299999999998 0.0029499999999999999" quat="0 -1 0 0">
+                              <inertial pos="0 -0.011046 0.012478599999999999" quat="1 0.16639999999999999 0 0" mass="0.012522200000000001" diaginertia="2.6741500000000001e-06 2.4559000000000001e-06 6.0203100000000003e-07"/>
+                              <joint name="iiwa14_1/Dual_wrist_camera/right_follower_joint" class="iiwa14_1/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_22" class="iiwa14_1/Dual_wrist_camera/visual" material="iiwa14_1/Dual_wrist_camera/metal" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/tongue"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_23" class="iiwa14_1/Dual_wrist_camera/visual" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/follower"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_24" class="iiwa14_1/Dual_wrist_camera/collision" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/tongue"/>
+                              <geom name="iiwa14_1/Dual_wrist_camera//unnamed_geom_25" class="iiwa14_1/Dual_wrist_camera/collision" pos="0.050907899999999999 -0.10392 -0.0091000000000000004" quat="1 -1 0 0" mesh="iiwa14_1/Dual_wrist_camera/follower"/>
+                              <body name="iiwa14_1/Dual_wrist_camera/right_pad" pos="-0.037789700000000002 -0.10391599999999999 -0.0091000000000000004" quat="1 -1 0 0">
+                                <geom name="iiwa14_1/Dual_wrist_camera/right_pad1" class="iiwa14_1/Dual_wrist_camera/pad_box1"/>
+                                <geom name="iiwa14_1/Dual_wrist_camera/right_pad2" class="iiwa14_1/Dual_wrist_camera/pad_box2"/>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <contact>
+    <exclude name="iiwa14//unnamed_contact_0" body1="iiwa14/base" body2="iiwa14/link1"/>
+    <exclude name="iiwa14//unnamed_contact_1" body1="iiwa14/base" body2="iiwa14/link2"/>
+    <exclude name="iiwa14//unnamed_contact_2" body1="iiwa14/base" body2="iiwa14/link3"/>
+    <exclude name="iiwa14//unnamed_contact_3" body1="iiwa14/link1" body2="iiwa14/link3"/>
+    <exclude name="iiwa14//unnamed_contact_4" body1="iiwa14/link3" body2="iiwa14/link5"/>
+    <exclude name="iiwa14//unnamed_contact_5" body1="iiwa14/link4" body2="iiwa14/link7"/>
+    <exclude name="iiwa14//unnamed_contact_6" body1="iiwa14/link5" body2="iiwa14/link7"/>
+    <exclude name="iiwa14/Dual_wrist_camera//unnamed_contact_0" body1="iiwa14/Dual_wrist_camera/base" body2="iiwa14/Dual_wrist_camera/left_driver"/>
+    <exclude name="iiwa14/Dual_wrist_camera//unnamed_contact_1" body1="iiwa14/Dual_wrist_camera/base" body2="iiwa14/Dual_wrist_camera/right_driver"/>
+    <exclude name="iiwa14/Dual_wrist_camera//unnamed_contact_2" body1="iiwa14/Dual_wrist_camera/base" body2="iiwa14/Dual_wrist_camera/left_spring_link"/>
+    <exclude name="iiwa14/Dual_wrist_camera//unnamed_contact_3" body1="iiwa14/Dual_wrist_camera/base" body2="iiwa14/Dual_wrist_camera/right_spring_link"/>
+    <exclude name="iiwa14/Dual_wrist_camera//unnamed_contact_4" body1="iiwa14/Dual_wrist_camera/right_coupler" body2="iiwa14/Dual_wrist_camera/right_follower"/>
+    <exclude name="iiwa14/Dual_wrist_camera//unnamed_contact_5" body1="iiwa14/Dual_wrist_camera/left_coupler" body2="iiwa14/Dual_wrist_camera/left_follower"/>
+    <exclude name="iiwa14_1//unnamed_contact_0" body1="iiwa14_1/base" body2="iiwa14_1/link1"/>
+    <exclude name="iiwa14_1//unnamed_contact_1" body1="iiwa14_1/base" body2="iiwa14_1/link2"/>
+    <exclude name="iiwa14_1//unnamed_contact_2" body1="iiwa14_1/base" body2="iiwa14_1/link3"/>
+    <exclude name="iiwa14_1//unnamed_contact_3" body1="iiwa14_1/link1" body2="iiwa14_1/link3"/>
+    <exclude name="iiwa14_1//unnamed_contact_4" body1="iiwa14_1/link3" body2="iiwa14_1/link5"/>
+    <exclude name="iiwa14_1//unnamed_contact_5" body1="iiwa14_1/link4" body2="iiwa14_1/link7"/>
+    <exclude name="iiwa14_1//unnamed_contact_6" body1="iiwa14_1/link5" body2="iiwa14_1/link7"/>
+    <exclude name="iiwa14_1/Dual_wrist_camera//unnamed_contact_0" body1="iiwa14_1/Dual_wrist_camera/base" body2="iiwa14_1/Dual_wrist_camera/left_driver"/>
+    <exclude name="iiwa14_1/Dual_wrist_camera//unnamed_contact_1" body1="iiwa14_1/Dual_wrist_camera/base" body2="iiwa14_1/Dual_wrist_camera/right_driver"/>
+    <exclude name="iiwa14_1/Dual_wrist_camera//unnamed_contact_2" body1="iiwa14_1/Dual_wrist_camera/base" body2="iiwa14_1/Dual_wrist_camera/left_spring_link"/>
+    <exclude name="iiwa14_1/Dual_wrist_camera//unnamed_contact_3" body1="iiwa14_1/Dual_wrist_camera/base" body2="iiwa14_1/Dual_wrist_camera/right_spring_link"/>
+    <exclude name="iiwa14_1/Dual_wrist_camera//unnamed_contact_4" body1="iiwa14_1/Dual_wrist_camera/right_coupler" body2="iiwa14_1/Dual_wrist_camera/right_follower"/>
+    <exclude name="iiwa14_1/Dual_wrist_camera//unnamed_contact_5" body1="iiwa14_1/Dual_wrist_camera/left_coupler" body2="iiwa14_1/Dual_wrist_camera/left_follower"/>
+  </contact>
+  <equality>
+    <connect name="iiwa14/Dual_wrist_camera//unnamed_equality_0" class="iiwa14/Dual_wrist_camera/" solref="0.0050000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" body1="iiwa14/Dual_wrist_camera/right_follower" body2="iiwa14/Dual_wrist_camera/right_coupler" anchor="-0.017901400000000001 -0.0065146800000000001 0.0044000000000000003"/>
+    <connect name="iiwa14/Dual_wrist_camera//unnamed_equality_1" class="iiwa14/Dual_wrist_camera/" solref="0.0050000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" body1="iiwa14/Dual_wrist_camera/left_follower" body2="iiwa14/Dual_wrist_camera/left_coupler" anchor="-0.017901400000000001 -0.0065146800000000001 0.0044000000000000003"/>
+    <joint name="iiwa14/Dual_wrist_camera//unnamed_equality_2" class="iiwa14/Dual_wrist_camera/" solref="0.0050000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" joint1="iiwa14/Dual_wrist_camera/right_driver_joint" joint2="iiwa14/Dual_wrist_camera/left_driver_joint" polycoef="0 1 0 0 0"/>
+    <connect name="iiwa14_1/Dual_wrist_camera//unnamed_equality_0" class="iiwa14_1/Dual_wrist_camera/" solref="0.0050000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" body1="iiwa14_1/Dual_wrist_camera/right_follower" body2="iiwa14_1/Dual_wrist_camera/right_coupler" anchor="-0.017901400000000001 -0.0065146800000000001 0.0044000000000000003"/>
+    <connect name="iiwa14_1/Dual_wrist_camera//unnamed_equality_1" class="iiwa14_1/Dual_wrist_camera/" solref="0.0050000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" body1="iiwa14_1/Dual_wrist_camera/left_follower" body2="iiwa14_1/Dual_wrist_camera/left_coupler" anchor="-0.017901400000000001 -0.0065146800000000001 0.0044000000000000003"/>
+    <joint name="iiwa14_1/Dual_wrist_camera//unnamed_equality_2" class="iiwa14_1/Dual_wrist_camera/" solref="0.0050000000000000001 1" solimp="0.94999999999999996 0.98999999999999999 0.001" joint1="iiwa14_1/Dual_wrist_camera/right_driver_joint" joint2="iiwa14_1/Dual_wrist_camera/left_driver_joint" polycoef="0 1 0 0 0"/>
+  </equality>
+  <tendon>
+    <fixed name="iiwa14/Dual_wrist_camera/split" class="iiwa14/Dual_wrist_camera/">
+      <joint joint="iiwa14/Dual_wrist_camera/right_driver_joint" coef="0.48499999999999999"/>
+      <joint joint="iiwa14/Dual_wrist_camera/left_driver_joint" coef="0.48499999999999999"/>
+    </fixed>
+    <fixed name="iiwa14_1/Dual_wrist_camera/split" class="iiwa14_1/Dual_wrist_camera/">
+      <joint joint="iiwa14_1/Dual_wrist_camera/right_driver_joint" coef="0.48499999999999999"/>
+      <joint joint="iiwa14_1/Dual_wrist_camera/left_driver_joint" coef="0.48499999999999999"/>
+    </fixed>
+  </tendon>
+  <actuator>
+    <general name="iiwa14/actuator1" class="iiwa14/joint1" joint="iiwa14/joint1"/>
+    <general name="iiwa14/actuator2" class="iiwa14/joint2" joint="iiwa14/joint2"/>
+    <general name="iiwa14/actuator3" class="iiwa14/joint1" joint="iiwa14/joint3"/>
+    <general name="iiwa14/actuator4" class="iiwa14/joint2" joint="iiwa14/joint4"/>
+    <general name="iiwa14/actuator5" class="iiwa14/joint1" joint="iiwa14/joint5"/>
+    <general name="iiwa14/actuator6" class="iiwa14/joint2" joint="iiwa14/joint6"/>
+    <general name="iiwa14/actuator7" class="iiwa14/joint3" joint="iiwa14/joint7"/>
+    <general name="iiwa14/Dual_wrist_camera/fingers_actuator" class="iiwa14/Dual_wrist_camera/2f85" ctrlrange="0 255" forcerange="-5 5" tendon="iiwa14/Dual_wrist_camera/split" gainprm="0.31372549999999999 0 0" biasprm="0 -100 -10"/>
+    <general name="iiwa14_1/actuator1" class="iiwa14_1/joint1" joint="iiwa14_1/joint1"/>
+    <general name="iiwa14_1/actuator2" class="iiwa14_1/joint2" joint="iiwa14_1/joint2"/>
+    <general name="iiwa14_1/actuator3" class="iiwa14_1/joint1" joint="iiwa14_1/joint3"/>
+    <general name="iiwa14_1/actuator4" class="iiwa14_1/joint2" joint="iiwa14_1/joint4"/>
+    <general name="iiwa14_1/actuator5" class="iiwa14_1/joint1" joint="iiwa14_1/joint5"/>
+    <general name="iiwa14_1/actuator6" class="iiwa14_1/joint2" joint="iiwa14_1/joint6"/>
+    <general name="iiwa14_1/actuator7" class="iiwa14_1/joint3" joint="iiwa14_1/joint7"/>
+    <general name="iiwa14_1/Dual_wrist_camera/fingers_actuator" class="iiwa14_1/Dual_wrist_camera/2f85" ctrlrange="0 255" forcerange="-5 5" tendon="iiwa14_1/Dual_wrist_camera/split" gainprm="0.31372549999999999 0 0" biasprm="0 -100 -10"/>
+  </actuator>
+  <keyframe>
+    <key name="iiwa14/home" qpos="0 0.78539800000000004 0 -1.5708 0 0 0" ctrl="0 0.78539800000000004 0 -1.5708 0 0 0"/>
+    <key name="iiwa14_1/home" qpos="0 0.78539800000000004 0 -1.5708 0 0 0" ctrl="0 0.78539800000000004 0 -1.5708 0 0 0"/>
+  </keyframe>
+</mujoco>
