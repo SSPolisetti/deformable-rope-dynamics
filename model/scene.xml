@@ -15,9 +15,29 @@
       markrgb="0.8 0.8 0.8" width="300" height="300"/>
     <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
   </asset>
-
+  <extension>
+   <plugin plugin="mujoco.elasticity.cable"/>
+</extension>
   <worldbody>
+    <composite prefix="actuated" type="cable" curve="cos(s) sin(s) s" count="41 1 1"
+                size="0.25 .1 4" offset="1.0 0 0.8" initial="none">
+        <joint kind="main" stiffness="0.02" damping="0.03"/>
+        <geom type="capsule" size=".005" rgba=".8 .2 .1 1"/>
+    </composite>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
     <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+
+    <!-- Table -->
+    <body name="table" pos="0.7 0 0">
+      <!-- tabletop: size = half-lengths -->
+      <geom name="table_top" type="box" size="0.4 0.3 0.025" pos="0 0 0.75"
+            rgba="0.55 0.35 0.2 1"/>
+
+      <!-- legs -->
+      <geom name="leg1" type="box" size="0.025 0.025 0.375" pos=" 0.35  0.25 0.375" rgba="0.3 0.2 0.1 1"/>
+      <geom name="leg2" type="box" size="0.025 0.025 0.375" pos="-0.35  0.25 0.375" rgba="0.3 0.2 0.1 1"/>
+      <geom name="leg3" type="box" size="0.025 0.025 0.375" pos=" 0.35 -0.25 0.375" rgba="0.3 0.2 0.1 1"/>
+      <geom name="leg4" type="box" size="0.025 0.025 0.375" pos="-0.35 -0.25 0.375" rgba="0.3 0.2 0.1 1"/>
+    </body>
   </worldbody>
 </mujoco>
