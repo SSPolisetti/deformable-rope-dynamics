@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from dm_control import mjcf
-from mujoco import viewer
 
 MODEL_DIR = Path(__file__).resolve().parent
 ARM_XML = MODEL_DIR / "kuka_iiwa_14" / "iiwa14.xml"
