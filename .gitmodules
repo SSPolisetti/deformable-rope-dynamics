@@ -1,0 +1,3 @@
+[submodule "lib/gpu_sls"]
+	path = lib/gpu_sls
+	url = https://github.com/Jeff300fang/gpu_sls.git
