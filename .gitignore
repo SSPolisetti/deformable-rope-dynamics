@@ -1,2 +1,4 @@
 .vscode/
 .DS_STORE
+__pycache__
+MUJOCO_LOG.TXT
