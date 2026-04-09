@@ -1,10 +1,15 @@
 import json
 import time
+from pathlib import Path
 
 import mujoco as mj
 import mujoco.viewer
 
-model = mj.MjModel.from_xml_path("./model/dual_iiwa14_2f85/scene.xml")
+BASE_DIR = Path(__file__).resolve().parent
+SCENE_PATH = BASE_DIR / "model" / "scene.xml"
+ROPE_POSE_PATH = BASE_DIR / "rope_pose.jsonl"
+
+model = mj.MjModel.from_xml_path(str(SCENE_PATH))
 data = mj.MjData(model)
 
 N = 12
@@ -36,7 +41,7 @@ with mujoco.viewer.launch_passive(model, data) as v:
                 )
                 # for quat: [w, x, y, z]
 
-            with open("rope_pose.jsonl", "a") as f:
+            with ROPE_POSE_PATH.open("a") as f:
                 json.dump({"time": data.time, "rope": rope_state}, f)
                 f.write("\n")
 
