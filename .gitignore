@@ -3,3 +3,4 @@
 .ruff_cache
 MUJOCO_LOG.TXT
 __pycache__
+checkpoints/

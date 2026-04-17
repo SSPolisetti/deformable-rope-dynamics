@@ -16,6 +16,9 @@
     <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
   </asset>
   <worldbody>
+    <!-- descriptions from POV of standing in front of the table facing the arms with the arms on the other side of the table -->
+    <camera name="front_camera" mode="fixed" pos="1.5 0 1.5" euler="0 1.1780972451 1.5707963268" resolution="256 256"/>
+    
     <composite prefix="actuated" type="cable" curve="0 s 0" count="41 1 1"
                 size="0.5 0.1 4" offset="0 -0.25 1.445" initial="free">
         <joint kind="main" stiffness="0.02" damping="0.03"/>
@@ -44,7 +47,8 @@
     <geom name="floating_rect_prism_2" type="box" size="0.0635 0.0635 0.0635" pos="0.85 0.16 0.925" euler="15 30 10" rgba="0.80 0.93 1.00 1"/>
     <geom name="floating_sphere_2" type="sphere" size="0.0580" pos="0.78 -0.22 0.95" rgba="0.40 0.83 0.97 1"/>
 
-    
+
+
   </worldbody>
   <equality>
     <weld name="left_anchor" site1="iiwa14_1/pinch_site" site2="actuatedS_first" solimp="0.9 0.95 0.001" solref="0.005 1"/>
