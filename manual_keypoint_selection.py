@@ -1,14 +1,22 @@
 import cv2
 from pathlib import Path
 import numpy as np
+import argparse
 
 BASE_DIR = Path(__file__).resolve().parent
-VIDEO_PATH = BASE_DIR / "data" / "videos" / "lowfps_rope_demo.mp4"
-OUTPUT_PATH = BASE_DIR / "data" / "rope_demo_query_txy.npy"
 
 
 
 def main():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input_video', help='Video file name is required. All other files names are assumed to be based off of input_video file name. Videos are assumed to be in data/videos/')
+
+    args = parser.parse_args()
+    VIDEO_PATH = BASE_DIR / "data" / "videos" / f"{args.input_video}.mp4"
+    OUTPUT_PATH = BASE_DIR / "data" / f"{args.input_video}_query_txy.npy"
+
+
     query_points = []
 
     def click_event(event, x, y, flags, params):

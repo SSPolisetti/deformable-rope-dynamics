@@ -12,15 +12,11 @@ from tapnet.tapnext.tapnext_torch import TAPNext, posemb_sincos_2d
 from tapnet.tapnext.tapnext_torch_utils import restore_model_from_jax_checkpoint
 from tapnet.utils import viz_utils
 
+import argparse
+
 
 BASE_DIR = Path(__file__).resolve().parent
-VIDEO_PATH = BASE_DIR / "data" / "videos" / "lowfps_rope_demo.mp4"
-QUERY_TRACKS_PATH = BASE_DIR / "data" / "rope_demo_query_txy.npy"
-CKPT_PATH = BASE_DIR / "checkpoints" / "tapnextpp_ckpt.pt"
 
-OUTPUT_TRACKS_PATH = BASE_DIR / "data" / "rope_demo_tapnextpp_pred_tracks_txy.npy"
-OUTPUT_OCCLUDED_PATH = BASE_DIR / "data" / "rope_demo_tapnextpp_pred_occluded.npy"
-OUTPUT_VIDEO_PATH = BASE_DIR / "data" / "videos" / "rope_demo_tapnextpp_vis.mp4"
 
 CKPT_SIZE = (256, 256)
 SWAP_TRACK_XY = True
@@ -55,10 +51,26 @@ def run_online_tracking(
 
 
 def main() -> None:
+
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input_video', help='Video file name is required. All other files names are assumed to be based off of input_video file name. Videos are assumed to be in data/videos/')
+
+    args = parser.parse_args()
+
+    VIDEO_PATH = BASE_DIR / "data" / "videos" / f"{args.input_video}.mp4"
+    QUERY_TRACKS_PATH = BASE_DIR / "data" / f"{args.input_video}_query_txy.npy"
+    CKPT_PATH = BASE_DIR / "checkpoints" / "tapnextpp_ckpt.pt"
+
+    OUTPUT_TRACKS_PATH = BASE_DIR / "data" / f"{args.input_video}_tapnextpp_pred_tracks_txy.npy"
+    OUTPUT_OCCLUDED_PATH = BASE_DIR / "data" / f"{args.input_video}_tapnextpp_pred_occluded.npy"
+    OUTPUT_VIDEO_PATH = BASE_DIR / "data" / "videos" / f"{args.input_video}_tapnextpp_vis.mp4"
+
     print(f"Loading video: {VIDEO_PATH}")
     frames = cv.VideoCapture(str(VIDEO_PATH))
 
     np_frames = []
+    np_frames_resized = []
     i = 0
     while True:
         ret, frame = frames.read()
@@ -67,21 +79,35 @@ def main() -> None:
         frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
         np_frames.append(frame)
 
+        resized = cv.resize(frame, (CKPT_SIZE[1], CKPT_SIZE[0]), interpolation=cv.INTER_AREA)
+        np_frames_resized.append(resized)
 
-    frames = np.array([np_frames])
+    if not np_frames:
+        print("No frames found in video.")
+        return
+
+    orig_h, orig_w = np_frames[0].shape[:2]
+    model_h, model_w = CKPT_SIZE
+    scale_x = model_w / orig_w
+    scale_y = model_h / orig_h
+
+    frames = np.array([np_frames_resized])
+    frames_orig = np.array([np_frames])
 
     print(f"Loading query tracks: {QUERY_TRACKS_PATH}")
     query_tracks_txy = np.load(QUERY_TRACKS_PATH)
     first_entry_txy = query_tracks_txy[0]
     query_points_np = first_entry_txy[:, [0, 2, 1]].astype(np.float32)
     valid = np.logical_and(query_points_np[:, 1] >= 0, query_points_np[:, 2] >= 0)
-    query_points_np = np.array([query_points_np[valid]]) # batch 
+    query_points_np = np.array([query_points_np[valid]]) # batch
+    query_points_np[..., 1] *= scale_y
+    query_points_np[..., 2] *= scale_x
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
     print("video frame shape: ", frames.shape[2:4])
-    model = TAPNext(image_size=frames.shape[2:4])
+    model = TAPNext(image_size=CKPT_SIZE)
 
     ckpt = torch.load(str(CKPT_PATH), map_location='cpu')
     model.load_state_dict({k.replace('tapnext.', ''): v for k, v in ckpt['state_dict'].items()})
@@ -96,6 +122,9 @@ def main() -> None:
 
     print("Running TAPNext tracking...")
     tracks, occluded = run_online_tracking(model, video, query_points)
+
+    tracks[..., 0] *= orig_w / model_w
+    tracks[..., 1] *= orig_h / model_h
 
     n_frames = tracks.shape[1]
     n_points = tracks.shape[0]
@@ -113,7 +142,7 @@ def main() -> None:
 
     print("Rendering visualization...")
     painted = viz_utils.paint_point_track(
-        frames=frames[0],
+        frames=frames_orig[0],
         point_tracks=tracks,
         visibles=~occluded,
     )
