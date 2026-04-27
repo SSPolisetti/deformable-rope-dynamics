@@ -578,8 +578,4 @@
     <general name="iiwa14_1/actuator7" class="iiwa14_1/joint3" joint="iiwa14_1/joint7"/>
     <general name="iiwa14_1/Dual_wrist_camera/fingers_actuator" class="iiwa14_1/Dual_wrist_camera/2f85" ctrlrange="0 255" forcerange="-5 5" tendon="iiwa14_1/Dual_wrist_camera/split" gainprm="0.3137255 0 0" biasprm="0 -100 -10"/>
   </actuator>
-  <keyframe>
-    <key name="iiwa14/home" qpos="0 0.785398 0 -1.5708 0 0 0" ctrl="0 0.785398 0 -1.5708 0 0 0"/>
-    <key name="iiwa14_1/home" qpos="0 0.785398 0 -1.5708 0 0 0" ctrl="0 0.785398 0 -1.5708 0 0 0"/>
-  </keyframe>
 </mujoco>

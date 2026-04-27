@@ -29,8 +29,6 @@ fi
 # Parse CLUSTER_LOGIN into user@host
 REMOTE_FULL="$CLUSTER_LOGIN"
 REMOTE_DIR="$CLUSTER_BASE_DIR"
-REMOTE_DIR_DATA="$CLUSTER_BASE_DIR/data/"
-
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -45,6 +43,8 @@ echo "  Local directory: $LOCAL_DIR"
 echo "  Remote: $REMOTE_FULL:$REMOTE_DIR"
 echo ""
 
+# Step 1: Rsync local code to remote
+
 rsync -avzh --progress \
     --exclude='.git/' \
     --exclude='__pycache__/' \
@@ -54,8 +54,7 @@ rsync -avzh --progress \
     --exclude='.env' \
     --exclude='.env.*' \
     --exclude='*.egg-info/' \
-    "$REMOTE_FULL:$REMOTE_DIR/data/" "$LOCAL_DIR/data/"
-
+    "$LOCAL_DIR/" "$REMOTE_FULL:$REMOTE_DIR/"
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}Error: Rsync failed!${NC}"
@@ -63,5 +62,22 @@ if [ $? -ne 0 ]; then
 fi
 
 echo ""
-echo -e "${GREEN}Rsync data from server completed successfully!${NC}"
+echo -e "${GREEN}Rsync completed successfully!${NC}"
 echo ""
+
+# SSH to remote and submit the job
+JOB_OUTPUT=$(ssh "$REMOTE_FULL" "cd $REMOTE_DIR && PYTHON_SCRIPT=$PYTHON_SCRIPT sbatch scripts/slurm_job.sbatch")
+
+if [ $? -ne 0 ]; then
+    echo -e "${RED}Error: SLURM job submission failed!${NC}"
+    exit 1
+fi
+
+echo "$JOB_OUTPUT"
+echo ""
+echo -e "${GREEN}=== Job submission complete! ===${NC}"
+
+
+
+
+

@@ -13,21 +13,18 @@ from tapnet.tapnext.tapnext_torch_utils import restore_model_from_jax_checkpoint
 from tapnet.utils import viz_utils
 
 
-bootstrapped = ""
-pp = "pp"
 BASE_DIR = Path(__file__).resolve().parent
-VIDEO_PATH = BASE_DIR / "data" / "teleop_front_camera.mp4"
-QUERY_TRACKS_PATH = BASE_DIR / "data" / "teleop_rope_tracks_txy.npy"
-CKPT_PATH = BASE_DIR / "checkpoints" / f"{bootstrapped}tapnext{pp}_ckpt.{'npz' if len(pp) == 0 else 'pt'}"
+VIDEO_PATH = BASE_DIR / "data" / "videos" / "lowfps_rope_demo.mp4"
+QUERY_TRACKS_PATH = BASE_DIR / "data" / "rope_demo_query_txy.npy"
+CKPT_PATH = BASE_DIR / "checkpoints" / "tapnextpp_ckpt.pt"
 
-OUTPUT_TRACKS_PATH = BASE_DIR / "data" / f"teleop_{bootstrapped}tapnext{pp}_pred_tracks_txy.npy"
-OUTPUT_OCCLUDED_PATH = BASE_DIR / "data" / f"teleop_{bootstrapped}tapnext{pp}_pred_occluded.npy"
-OUTPUT_VIDEO_PATH = BASE_DIR / "data" / f"teleop_{bootstrapped}tapnext{pp}_vis.mp4"
+OUTPUT_TRACKS_PATH = BASE_DIR / "data" / "rope_demo_tapnextpp_pred_tracks_txy.npy"
+OUTPUT_OCCLUDED_PATH = BASE_DIR / "data" / "rope_demo_tapnextpp_pred_occluded.npy"
+OUTPUT_VIDEO_PATH = BASE_DIR / "data" / "videos" / "rope_demo_tapnextpp_vis.mp4"
 
 CKPT_SIZE = (256, 256)
 SWAP_TRACK_XY = True
 OUTPUT_FPS = 24
-
 
 
 def run_online_tracking(
@@ -70,7 +67,9 @@ def main() -> None:
         frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
         np_frames.append(frame)
 
+
     frames = np.array([np_frames])
+
     print(f"Loading query tracks: {QUERY_TRACKS_PATH}")
     query_tracks_txy = np.load(QUERY_TRACKS_PATH)
     first_entry_txy = query_tracks_txy[0]
@@ -81,12 +80,11 @@ def main() -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
+    print("video frame shape: ", frames.shape[2:4])
     model = TAPNext(image_size=frames.shape[2:4])
-    if len(pp) == 0:
-        model = restore_model_from_jax_checkpoint(model, str(CKPT_PATH))
-    else:
-        ckpt = torch.load(str(CKPT_PATH), map_location='cpu')
-        model.load_state_dict({k.replace('tapnext.', ''): v for k, v in ckpt['state_dict'].items()})
+
+    ckpt = torch.load(str(CKPT_PATH), map_location='cpu')
+    model.load_state_dict({k.replace('tapnext.', ''): v for k, v in ckpt['state_dict'].items()})
     
     model = model.to(device).eval()
 
@@ -133,7 +131,6 @@ def main() -> None:
 
     for i in range(painted.shape[0]):
         save.write(cv.cvtColor(painted[i], cv.COLOR_RGB2BGR))
-
 
     save.release()
 

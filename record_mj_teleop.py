@@ -10,14 +10,15 @@ import mediapy as media
 BASE_DIR = Path(__file__).resolve().parent
 SCENE_PATH = BASE_DIR / "model" / "scene.xml"
 
-VIDEO_PATH = BASE_DIR / "data" / "teleop_front_camera.mp4"
-TRACKS_PATH = BASE_DIR / "data" / "teleop_rope_tracks_txy.npy"
-OCCLUSION_PATH = BASE_DIR / "data" / "teleop_rope_tracks_occluded.npy"
+VIDEO_PATH = BASE_DIR / "data" / "videos" / "teleop_front_occluded_camera.mp4"
+TRACKS_PATH = BASE_DIR / "data" / "teleop_rope_occluded_tracks_txy.npy"
+OCCLUSION_PATH = BASE_DIR / "data" / "teleop_rope_occluded_tracks_occluded.npy"
 
 CAMERA_NAME = "front_camera"
 
 FPS = 24
 DURATION = 10  # seconds
+SETUP_TIME = 5 # seconds
 N_TRACKED_CAPSULES = 34
 WIDTH = 1280
 HEIGHT = 720
@@ -34,7 +35,7 @@ for i in range(model.ngeom):
 
 start = (len(rope_geom_ids) - N_TRACKED_CAPSULES) // 2
 # tracked_geom_ids = rope_geom_ids[start : start + N_TRACKED_CAPSULES]
-tracked_geom_ids = [rope_geom_ids[i] for i in range(start, start + N_TRACKED_CAPSULES, 2)]
+tracked_geom_ids = [rope_geom_ids[i] for i in range(start, start + N_TRACKED_CAPSULES)]
 
 camera_id = mj.mj_name2id(model, mj.mjtObj.mjOBJ_CAMERA, CAMERA_NAME)
 camera_resolution = model.cam_resolution[camera_id]
@@ -79,7 +80,7 @@ def compute_camera_matrix(renderer, data):
 n_frames = int(FPS * DURATION)
 capture_dt = 1.0 / FPS
 
-tracks_txy = np.full((n_frames, N_TRACKED_CAPSULES, 3), -1.0, dtype=np.float32)
+tracks_txy = np.full((n_frames, N_TRACKED_CAPSULES, 2), -1.0, dtype=np.float32)
 occluded = np.zeros((n_frames, N_TRACKED_CAPSULES), dtype=np.uint8)
 
 options = mj.MjvOption()
@@ -94,6 +95,10 @@ frame_idx = 0
 
 with mj.Renderer(model, height=camera_height, width=camera_width) as renderer:
     with mujoco.viewer.launch_passive(model, data) as viewer:
+
+
+        mj.mj_resetDataKeyframe(model, data, 0) # load keyframe that makes it easy to get a loop
+
         while viewer.is_running() and frame_idx < n_frames:
             step_start = time.time()
             mj.mj_step(model, data)
@@ -137,7 +142,7 @@ with mj.Renderer(model, height=camera_height, width=camera_width) as renderer:
                     if selected_geom_id != geom_id:
                         occluded[frame_idx, i] = 1
 
-                    tracks_txy[frame_idx, i, :] = np.array([frame_idx, x, y])
+                    tracks_txy[frame_idx, i, :] = np.array([x, y])
 
                 frame_idx += 1
                 next_capture_time += capture_dt
